@@ -1,0 +1,19 @@
+name: Build iOS IPA
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build archive and IPA
+        run: |
+          chmod +x build-ipa.sh
+          ./build-ipa.sh
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: Unity-iPhone-ipa
+          path: build/ipa/*.ipa
