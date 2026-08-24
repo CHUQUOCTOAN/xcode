@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build archive and IPA
+        env:
+          UNSIGNED: "1"
         run: |
           chmod +x build-ipa.sh
           ./build-ipa.sh
